@@ -1,12 +1,10 @@
-html {
-  scroll-behavior: smooth;
-}
 body {
 margin: 0px;
 background-image: url("../images/Back.jpg");
 color: white;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
+/* To keep header stuck to the top of the page while scrolling */
 body>header {
   position: sticky;
   position: -webkit-sticky;
@@ -19,42 +17,40 @@ body>header {
   border-bottom-right-radius: 20px;
   flex-wrap: wrap;
   justify-content: center;
-  /* margin-top: 0px;
-  padding-top: 0px;
-  border-top: 0px; */
   text-align: center;
+  z-index: 999;
 }
 
-body header h1 {
-  /* float: left; */
+h1 {
+  font-size: 30px;
+}
+/* webpage navigation options */
+body header nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+body header{
   color: white;
-  font-family: 'Courier New', Courier, monospace;
   font-size: 30px;
   display: flex;
   margin: 0px;
   justify-content: center;
+  flex-wrap: wrap;
 }
-
-body header nav {
-  display: flex;
-  justify-content: center;
-flex-wrap: wrap;
-}
-
 body header nav div {
-/* display: inline-flexbox; */
-/* list-style: none; */
-padding-left: 20px;
-font-size: 25px;
-margin-top: 0.2em;
-min-width: 169px;
+  padding-left: 20px;
+  font-size: 25px;
+  margin-top: 0.2em;
+  min-width: 169px;
 }
-
+/* No one likes the blue text and link dots, come on it's 2021 */
 a {
   text-decoration: none;
   color: aliceblue;
 }
-
+/* to adjust general styling for everything beneath the header */
 main {
   margin: 2%;
   display: grid;
@@ -62,24 +58,12 @@ main {
   grid-template-rows: 1fr auto auto;
   text-align: center;
 }
-
+/* article is remaining content after featured, about me, and my beautiful portrait */
 article {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 4;
   grid-template-columns: 1fr;
-}
-@media (max-width: 992px) {
-  main {
-    /* grid-template-columns: 30% 70%; */
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-@media (max-width: 600px) {
-  main {
-    grid-template-columns: 1fr;
-    /* display: block; */
-  }
 }
 
 section{
@@ -88,28 +72,27 @@ section{
   margin: 5px;
   background-color: rgba(211, 211, 211, 0.1);
 }
-
+/* Just to make the videos look less out of place */
 video {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
-
+/* interesting interaction here with the z axis for some reason grid layout
+ is bugging out and doesn't work correctly but the result is pleasing so we'll ignore it for now */
 .Portrait{
   grid-column: 1;
   grid-row-start: 1;
   grid-row-end: 1;
   padding: 5px;
 }
-
 #Portrait {
-width: 100%;
-height: auto;
-border-radius: 20px;
-background-color: rgba(211, 211, 211, 0.1);
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  background-color: rgba(211, 211, 211, 0.1);
 }
-
+/* about me styling to be hidden over portrait */
 aside {
-  /* scroll-padding: 800px; */
   grid-column-start: 1;
   grid-column-end: 1;
   grid-row-start: 1;
@@ -117,17 +100,30 @@ aside {
   border-radius: 20px;
   padding: 5px;
   background-color: rgba(0, 0, 0, 0.15);
-  /* height: fit-content; */
 }
+/* rules for mobile devices */
 .Content {
   grid-row-start: 4;
   grid-column: 1;
+  font-size: 20px;
 }
-
+/* for the big showcase link when not on mobile */
 #Featured {
   grid-column-start: 2;
   grid-column-end: 4;
 }
+/* footer styling, bothering me because the flex conflicts with borders (I'll need to investigate further) looks out of place */
+footer {
+  display: inline;
+}
+footer ul {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 10px;
+  list-style: none;
+  font-size: 20px;
+}
+/* Yay media queries for making the grid layout work how I want and psuedo classes to only apply on larger screens */
 @media (min-width: 600px) {
   article {
     grid-template-columns: 1fr 1fr;
@@ -153,6 +149,15 @@ aside {
     height: 0px;
     width: 0px;
     margin: 0px;
+  }
+  .Content:hover > .text{
+  transition: 1s;
+  padding-right: -25%;
+  padding-bottom: 10px;
+  opacity: 1;
+  height: auto;
+  width: auto;
+  }
 }
 @media (min-width: 992px) {
   article {
@@ -162,21 +167,18 @@ aside {
     grid-column-start: 3;
   }
 }
-.Content:hover > .text{
-  transition: 1s;
-  padding-right: -25%;
-  padding-bottom: 10px;
-  opacity: 1;
-  height: auto;
-  width: auto;
+@media (max-width: 992px) {
+  #Featured {
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
+  main {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  aside p {
+    font-size: 0.75em;
+  }
 }
-}
-/* @media (max-width: 992px) {
-  aside {
-    grid-column: 2;
-    grid-row: 1;
-  } */
-/* } */
 @media (max-width: 600px) {
   aside {
     grid-column: 1;
@@ -191,19 +193,14 @@ aside {
   .column3 {
     grid-row-start: 6;
   }
-}
-@media (max-width: 992px) {
-  #Featured {
-    grid-column-start: 2;
-    grid-column-end: 4;
-  }
-}
-@media (max-width: 600px) {
-  #Featured {
+    #Featured {
     grid-column: 1;
     grid-row: 2;
   }
-}
-
-#About{
+  main {
+    grid-template-columns: 1fr;
+  }
+  aside p {
+    font-size: 1em;
+  }
 }
