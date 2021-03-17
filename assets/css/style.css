@@ -1,0 +1,142 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+margin: 0px;
+background-image: url("../images/Back.jpg");
+color: white;
+}
+
+body>header {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  background-image: url("../images/Header.jpg");
+  width: 100vw;
+  min-height: 45px;
+  height: auto;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* margin-top: 0px;
+  padding-top: 0px;
+  border-top: 0px; */
+  text-align: center;
+}
+
+body header h1 {
+  /* float: left; */
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
+  display: flex;
+  margin: 0px;
+  justify-content: center;
+}
+
+body header nav {
+  display: flex;
+  justify-content: center;
+flex-wrap: wrap;
+}
+
+body header nav div {
+/* display: inline-flexbox; */
+/* list-style: none; */
+padding-left: 20px;
+font-size: 25px;
+margin-top: 0.2em;
+min-width: 169px;
+}
+
+a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+main {
+  margin: 2%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  text-align: center;
+}
+
+@media (max-width: 992px) {
+  main {
+    grid-template-columns: 30% 70%;
+  }
+}
+@media (max-width: 600px) {
+  main {
+    grid-template-columns: 1fr;
+    /* display: block; */
+  }
+}
+
+section{
+  border-radius: 20px;
+  padding: 5px;
+  margin: 5px;
+  background-color: rgba(211, 211, 211, 0.1);
+}
+video {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.Portrait{
+  grid-column: 1;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  padding: 5px;
+}
+
+#Portrait {
+width: 100%;
+height: auto;
+border-radius: 20px;
+}
+
+aside {
+  /* scroll-padding: 800px; */
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  border-radius: 20px;
+  padding: 5px;
+  background-color: rgba(211, 211, 211, 0.1);
+}
+
+#Featured {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+@media (max-width: 992px) {
+  aside {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+@media (max-width: 600px) {
+  aside {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+@media (max-width: 992px) {
+  #Featured {
+    grid-column: 2;
+  }
+}
+@media (max-width: 600px) {
+  #Featured {
+    grid-column: 1;
+    grid-row: 3;
+  }
+}
+#About{
+}
